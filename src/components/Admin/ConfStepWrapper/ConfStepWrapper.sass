@@ -1,0 +1,150 @@
+.conf-step
+  position: relative
+  background-color: rgba(234, 233, 235, 0.95)
+
+  &::before
+    content: ''
+    position: absolute
+    left: 62px
+    margin-left: -1px
+    top: 0
+    bottom: 0
+    display: block
+    width: 2px
+    background-color: #bc95d6
+
+.conf-step__header
+  cursor: pointer
+  padding: 35px 42px 35px 104px
+
+.conf-step__wrapper, .conf-step__header
+  padding: 35px 42px 35px 104px
+
+.conf-step__header_opened + .conf-step__wrapper
+  display: block
+
+.conf-step__header_closed + .conf-step__wrapper
+  display: none
+
+  &::after
+    transform: rotate(-90deg)
+
+.conf-step__header
+  position: relative
+  box-sizing: border-box
+  background-color: #63536c
+  color: #ffffff
+  transition-property: all
+  transition-duration: 0.6s
+  transition-timing-function: ease
+
+  &::before
+    content: ''
+    position: absolute
+    left: 62px
+    margin-left: -1px
+    top: 0
+    bottom: 0
+    display: block
+    width: 2px
+    background-color: #bc95d6
+
+  &::after
+    content: ''
+    position: absolute
+    top: calc(50% - 8px)
+    display: block
+    right: 42px
+    width: 24px
+    height: 16px
+    background-image: url('../../../../public/i/switch.png')
+    background-size: 24px 16px
+
+  &:hover, &:focus
+    background-color: #89639e
+
+  .conf-step__title
+    font-size: 2.2rem
+    font-weight: 700
+    text-transform: uppercase
+    counter-increment: num
+    transition-property: all
+    transition-duration: 0.6s
+    transition-timing-function: ease
+
+    &::before
+      content: counter(num)
+      position: absolute
+      display: block
+      left: 62px
+      top: 50%
+      margin-left: -22px
+      margin-top: -22px
+      width: 44px
+      height: 44px
+      border-radius: 50%
+      border: 5px solid #bc95d6
+      background-color: #ffffff
+      box-sizing: border-box
+      color: #63536c
+      font-weight: 900
+      font-size: 2.8rem
+      text-align: center
+      letter-spacing: normal
+
+  &:hover .conf-step__title
+    letter-spacing: 2px
+    transition-property: all
+    transition-duration: 0.6s
+    transition-timing-function: ease
+
+    &::before
+      letter-spacing: normal
+
+.conf-step
+  &:first-of-type .conf-step__header::before
+    top: 50%
+
+  &:last-of-type
+    .conf-step__header::before
+      bottom: 50%
+
+    &::before
+      display: none
+
+@media (max-width: 600px)
+  .conf-step__wrapper
+    padding: 18px 18px 18px 64px
+
+  .conf-step__header
+    padding: 18px 60px 18px 80px
+
+    &::after
+      right: 24px
+
+    .conf-step__title::before
+      left: 45px
+
+  .conf-step::before
+    left: 45px
+
+  .conf-step__header
+    &::before
+      left: 45px
+
+    .conf-step__title
+      font-size: 1.9rem
+
+@media (max-width: 450px)
+  .conf-step__wrapper
+    padding-left: 50px
+    padding-right: 14px
+
+  .conf-step__header
+    padding-left: 70px
+
+    .conf-step__title::before
+      left: 35px
+
+  .conf-step::before, .conf-step__header::before
+    left: 35px
